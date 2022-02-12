@@ -80,6 +80,23 @@ namespace MathLib.Math {
             return new Coords(x, y);
         }
 
+        public static Coords Translate(Coords pos, Coords vec)
+        {
+            float[] translateValues =
+            {
+                1, 0, 0, vec.x,
+                0, 1, 0, vec.y,
+                0, 0, 1, vec.z,
+                0, 0, 0, 1
+            };
+
+            Matrix translateMatrix = new Matrix(4, 4, translateValues);
+            Matrix positionMatrix = new Matrix(4, 1, pos.CoordsToFloatValArray());
+            Matrix m3 = translateMatrix * positionMatrix;
+
+            return m3.MatrixToCoords();
+        }
+
         public static Coords CrossProduct(Coords vec1, Coords vec2) {
             float x = vec1.y * vec2.z - vec1.z * vec2.y;
             float y = vec1.z * vec2.x - vec1.x * vec2.z;

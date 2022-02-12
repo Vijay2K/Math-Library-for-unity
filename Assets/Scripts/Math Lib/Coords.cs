@@ -5,7 +5,7 @@ using MathLib.Math;
 
 public class Coords
 {
-    public float x, y, z;
+    public float x, y, z, w;
 
     public Coords(float x, float y) {
         this.x = x;
@@ -19,10 +19,32 @@ public class Coords
         this.z = z;
     }
 
+    public Coords(float x, float y, float z, float w)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;        
+    }
+
     public Coords(Vector3 vec) {
         x = vec.x;
         y = vec.y;
         z = vec.z;
+    }
+
+    public Coords(Vector3 vec, float w)
+    {
+        x = vec.x;
+        y = vec.y;
+        z = vec.z;
+        this.w = w;
+    }
+
+    public float[] CoordsToFloatValArray()
+    {
+        float[] values = { x, y, z, w };
+        return values;
     }
 
     public static Coords Perpendicular(Coords vec) {
