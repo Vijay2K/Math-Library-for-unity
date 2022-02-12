@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Vijay.Math {
+namespace MathLib.Math {
     public class MyMath {
         public static float Distance(Coords point1, Coords point2) {
             float sqrDiff = Square(point1.x - point2.x) + Square(point1.y - point2.y) + Square(point1.z - point2.z);

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Vijay.Math;
+using MathLib.Math;
 
 public class Tank : MonoBehaviour
 {
