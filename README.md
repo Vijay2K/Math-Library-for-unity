@@ -1,6 +1,6 @@
 # Math Library for unity
 
-Math Library for Unity contains large amount of useful objects and methods and is aimed to provide solutions for 
+Math Library for Unity contains useful objects and methods and is aimed to provide solutions for 
 common geometric and algebraic tasks which game developers might face.
 
 ## Method which are included in this math library
