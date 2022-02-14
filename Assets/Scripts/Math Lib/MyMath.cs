@@ -97,6 +97,41 @@ namespace MathLib.Math {
             return m3.MatrixToCoords();
         }
 
+        public static Coords Scale(Coords initialVec, Coords scale)
+        {
+            float[] scaleValues =
+            {
+                scale.x, 0, 0, 0,
+                0, scale.y, 0, 0,
+                0, 0, scale.z, 0,
+                0, 0, 0, 1
+            };
+
+            Matrix scalingMatrix = new Matrix(4, 4, scaleValues);
+            Matrix initialMatrix = new Matrix(4, 1, initialVec.CoordsToFloatValArray());
+            Matrix m3 = scalingMatrix * initialMatrix;
+
+            return m3.MatrixToCoords();
+
+        }
+
+        public static Coords Scale(Coords position, float x, float y, float z)
+        {
+            float[] scalingValues =
+            {
+                x, 0, 0, 0,
+                0, y, 0, 0,
+                0, 0, z, 0,
+                0, 0, 0, 1
+            };
+
+            Matrix scalingMatrix = new Matrix(4, 4, scalingValues);
+            Matrix positionMatrix = new Matrix(4, 1, position.CoordsToFloatValArray());
+            Matrix m3 = scalingMatrix * positionMatrix;
+
+            return m3.MatrixToCoords();
+        }
+
         public static Coords CrossProduct(Coords vec1, Coords vec2) {
             float x = vec1.y * vec2.z - vec1.z * vec2.y;
             float y = vec1.z * vec2.x - vec1.x * vec2.z;

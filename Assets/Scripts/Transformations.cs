@@ -6,19 +6,22 @@ using MathLib.Math;
 public class Transformations : MonoBehaviour
 {
     public GameObject[] points;
+    public Transform centerPoint;
     public float angle;
     public Vector3 translates;
+    public Vector3 scaling;
 
     private void Start()
     {
-        /*        Coords position = new Coords(point.transform.position, 1);
-                point.transform.position = MyMath.Translate(position, new Coords(translate, 0)).ToVector();*/
-
-        Coords[] positions = new Coords[points.Length];
-        for(int i = 0; i < points.Length; i++)
+        Vector3 centerPos = new Vector3(centerPoint.position.x, centerPoint.position.y, centerPoint.position.z);
+        Debug.Log("Center Pos : " + centerPos);
+        foreach(GameObject point in points)
         {
-            positions[i] = new Coords(points[i].transform.position, 1);
-            points[i].transform.position = MyMath.Translate(positions[i], new Coords(translates, 0)).ToVector();
+            Coords position = new Coords(point.transform.position, 1);
+
+            position = MyMath.Translate(position, new Coords(-centerPos, 0));
+            position = MyMath.Scale(position, new Coords(scaling));
+            point.transform.position = MyMath.Translate(position, new Coords(centerPos, 0)).ToVector();
         }
 
     }
