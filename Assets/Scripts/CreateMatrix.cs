@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class CreateMatrix : MonoBehaviour
 {
-    Matrix m1, m2, m3;
-
-    private void Start()
+    void Start()
     {
-        float[] values = { 1, 2, 3, 4, 5, 6 };
-        float[] v2 = { 1, 2, 3, 4, 5, 6 };
+        Matrix m1 = new Matrix(2, 2, new float[] { 2, 4, 2, 6 });
+        Matrix m2 = new Matrix(2, 2, new float[] { 1, 3, 2, 4 });
 
-        m1 = new Matrix(2, 3, values);
-        m2 = new Matrix(3, 2, v2);
+        Matrix m3 = new Matrix(3, 2, new float[] { 1, 2, 3, 4, 5, 6 });
+        Matrix m4 = new Matrix(2, 4, new float[] { 1, 2, 3, 4, 5, 6, 7, 8 });
 
-        m3 = m1 * m2;
+        Matrix addMatrix = m1 + m2;
+        Matrix multiplyMatrix = m3 * m4;
 
-        Debug.Log(m1.ToString());
-        Debug.Log(m2.ToString());
-        Debug.Log("Ans : \n");
-        Debug.Log(m3.ToString());
-        
+        Debug.Log("Add : \n" + addMatrix.ToString());
+        Debug.Log("Multiply : \n" + multiplyMatrix.ToString());
     }
 }
