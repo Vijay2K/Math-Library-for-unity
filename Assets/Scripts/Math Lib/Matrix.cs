@@ -17,6 +17,14 @@ public class Matrix
         Array.Copy(v, values, rows * cols);
     }
 
+    public Coords MatrixToCoords()
+    {
+        if (rows == 4 && cols == 1)
+            return new Coords(values[0], values[1], values[2], values[3]);
+        else
+            return null;
+    }
+
     #region OPERATOR OVERLOADING
     
     public static Matrix operator+ (Matrix m1, Matrix m2)
@@ -77,7 +85,6 @@ public class Matrix
     }
 
     #endregion
-
 
     public override string ToString()
     {
