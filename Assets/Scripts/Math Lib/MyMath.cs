@@ -66,6 +66,23 @@ namespace MathLib.Math {
 
             return new Coords(x, y, z);
         }
+        
+        public static Coords Translate(Coords pos, Coords vec)
+        {
+            Matrix posMatrix = new Matrix(4, 1, pos.CoordsToFloatValArray());
+
+            Matrix translateMatrix = new Matrix(4, 4, new float[]
+            {
+                1, 0, 0, vec.x,
+                0, 1, 0, vec.y,
+                0, 0, 1, vec.z,
+                0, 0, 0, 1
+            });
+
+            Matrix resultMatrix = translateMatrix * posMatrix;
+
+            return resultMatrix.MatrixToCoords();
+        }
 
         public static Coords Rotate(Coords vector, float angle, bool isClockwise) {
             //ANGLE SHOULD BE IN RADIAN
