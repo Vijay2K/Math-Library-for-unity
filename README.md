@@ -4,7 +4,7 @@ Math Library for Unity contains useful objects and methods and is aimed to provi
 common geometric and algebraic tasks which game developers might face.
 
 ## Method which are included in this math library
-  - Coords (instead of vectors)
+  - Vectors
   - Distance
   - Dot product
   - Cross product
