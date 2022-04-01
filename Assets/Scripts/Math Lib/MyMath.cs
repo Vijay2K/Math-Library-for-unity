@@ -84,6 +84,38 @@ namespace MathLib.Math {
             return resultMatrix.MatrixToCoords();
         }
 
+        public static Coords Scale(Coords pos, Coords scaleVal)
+        {
+            Matrix posMatrix = new Matrix(4, 1, pos.CoordsToFloatValArray());
+
+            Matrix scaleMatrix = new Matrix(4, 4, new float[]
+            {
+                scaleVal.x, 0, 0, 0,
+                0, scaleVal.y, 0, 0,
+                0, 0, scaleVal.z, 0,
+                0, 0, 0, 1
+            });
+
+            Matrix resultMatrix = scaleMatrix * posMatrix;            
+            return resultMatrix.MatrixToCoords();
+        }
+
+        public static Coords Scale(Coords pos, float scaleX, float scaleY, float scaleZ)
+        {
+            Matrix posMatrix = new Matrix(4, 1, pos.CoordsToFloatValArray());
+
+            Matrix scaleMatrix = new Matrix(4, 4, new float[]
+            {
+                scaleX, 0, 0, 0,
+                0, scaleY, 0, 0,
+                0, 0, scaleZ, 0,
+                0, 0, 0, 1
+            });
+
+            Matrix resultMatrix =  scaleMatrix * posMatrix;
+            return resultMatrix.MatrixToCoords();
+        }
+
         public static Coords Rotate(Coords vector, float angle, bool isClockwise) {
             //ANGLE SHOULD BE IN RADIAN
 
